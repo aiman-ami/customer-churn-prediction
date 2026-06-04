@@ -8,7 +8,7 @@ Banks lose customers every day. Most of them do not know it is happening until i
 
 Out of 10,000 bank customers in this dataset, 2,037 had already churned. That is a 20.4% churn rate.
 
-![Churn Distribution](images/churn_distribution.png)
+![Churn Distribution](churn_distribution.png)
 
 That is 1 in 5 customers walking out the door. Without a way to predict who is next, retention budgets get spread thin across everyone instead of focused on the customers who actually need attention.
 
@@ -34,15 +34,15 @@ Before building anything I wanted to understand what the data was actually sayin
 
 Churn was heavily concentrated in the 40 to 60 age group. Younger customers mostly stayed. High-balance customers churned more than lower-balance ones, which suggests customers with more options elsewhere are quicker to leave.
 
-![Age and Balance Distributions](images/age_balance_distributions.png)
+![Age and Balance Distributions](age_balance_distributions.png)
 
 Female customers churned at 25.1% versus 16.5% for male customers. Customers holding 2 products were the most loyal with a churn rate under 10%, while customers holding 3 or 4 products churned at 82% and nearly 100% respectively. That pattern suggests over-selling products actually backfires. Inactive members churned at almost double the rate of active ones.
 
-![Churn by Demographics](images/churn_by_demographics.png)
+![Churn by Demographics](churn_by_demographics.png)
 
 The correlation heatmap confirmed age as the most correlated single feature with churn at 0.29, followed by balance at 0.12 and active membership at -0.16.
 
-![Feature Correlation Matrix](images/correlation_heatmap.png)
+![Feature Correlation Matrix](correlation_heatmap.png)
 
 **3. Trained three models**
 I trained Logistic Regression, Decision Tree, and Random Forest classifiers using an 80/20 train-test split.
@@ -62,17 +62,17 @@ Each model was evaluated on accuracy, ROC-AUC score, and confusion matrix to see
 
 Random Forest came out on top across both metrics. Looking at the confusion matrices, it also caught more churned customers correctly. 178 true positives versus 163 for Decision Tree and just 76 for Logistic Regression. In a retention context that matters more than overall accuracy because missing a churner is more costly than a false alarm.
 
-![Confusion Matrices](images/confusion_matrices.png)
+![Confusion Matrices](confusion_matrices.png)
 
 The ROC curves make the gap between models visible. Random Forest stays above the other two across the full range of thresholds.
 
-![ROC Curves](images/roc_curves.png)
+![ROC Curves](roc_curves.png)
 
 **Feature importance from the Random Forest model:**
 
 Age accounted for 35% of the model's predictive power. Number of products came second at 26%. Balance, active membership status, and geography rounded out the top five.
 
-![Feature Importance](images/feature_importance.png)
+![Feature Importance](feature_importance.png)
 
 ---
 
